@@ -1,0 +1,101 @@
+@startuml Geovanni Paolo Ortega Gutierrez, 24110209, 3°F;
+class Jugador{
+-Puntaje:puntuacion
+}
+Class Pacman{
+-Vida:vidas[3]
++MoverPacman(Tecla):
++ComerFantasma(Enemigo):Punto
++BorrarMovimiento():
++Revivir(vida):
++ComerComida(Fruta,Pacdot,SuperPastilla):Punto
+}
+Class Personaje{
+-Atributo:cualidades[2]
+-Animacion:anime
+-Sonido:sonido
+}
+Class Animacion
+Class Fantasma{
+-EstadoDeAlerta:alerta
+-EstadoDisperso:disperso
+}
+Class Sonido
+Class Escenario{
+-Laberinto:laberinto
++LimitarMovimiento(Tecla):
+}
+Class EstadoDeAlerta
+Class EstadoDisperso
+Class Enemigo{
++MoverFantasma(Tecla):
++ComerPacman(Pacman):Vida
+}
+Class Velocidad
+Class Invulnerabilidad
+Class Laberinto{
+-Zona:zonas[4]
+-Recurso:recursos[]
+}
+Class Zona{
+-Esquina:esquina
+}
+Class Muro{
+-Limite:limite
+}
+Class Recurso{
++ComerPastilla(Enemigo):Punto
++ComerSuperPastilla(SuperPastilla):Invulnerabilidad
++ComerCereza(Cereza):Punto
+
+}
+Class Esquina{
+-Muro:muros[]
+}
+Class Vida
+Class Pastilla
+Class Pacdot
+Class Corazon
+Class Atributo
+Class Comida
+Class Fruta
+Class Puntaje{
+-Punto:puntos[]
+}
+Class Limite
+Class Cereza
+Class SuperPastilla
+Class Punto
+
+Jugador "1" o--"1" Pacman
+Pacman"1" o--"4" Enemigo
+Enemigo"1" o--"1" Pacman
+Jugador "1" *--"1" Puntaje
+Puntaje"1" *--"*" Punto
+Jugador "1" o--"1" Escenario
+Pacman"1" o--"*" Recurso
+Escenario "1" *--"1"Laberinto
+Laberinto "1" *--"4"Zona
+Zona"1" *--"1"Esquina
+Esquina "1" *--"*"Muro
+Muro "1" *--"1"Limite
+Pacman "1" --|>"1" Personaje
+Personaje"1" *--"1"Sonido
+Personaje"1" *--"1"Animacion
+Enemigo "1" --|>"1" Personaje
+Fantasma"1" --|>"1" Enemigo
+Fantasma"1" *--"1"EstadoDeAlerta
+Fantasma"1" *--"1"EstadoDisperso
+Laberinto "1" *--"*"Recurso
+Recurso"1" <|--"1" Comida
+Comida"1" <|--"1" Fruta
+Comida"1" <|--"1" Pastilla
+Pastilla"1" <|--"4" SuperPastilla
+Pastilla"1" <|--"*" Pacdot
+Fruta"1" <|--"1" Cereza
+Pacman"1" *--"3"Vida
+Personaje"1" *--"2"Atributo
+Vida"1" <|--"1" Corazon
+Atributo"1" <|--"1" Velocidad
+Atributo"1" <|--"1" Invulnerabilidad
+@enduml
