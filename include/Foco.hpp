@@ -3,8 +3,6 @@ class Foco
 {
 private:
     bool Encendido;
-    void ApagarTodo();
-    void Apagar();
 public:
     Foco(/* args */) {
         Encendido = false;
@@ -18,11 +16,10 @@ public:
     {
         Encendido = false;
     }
-    bool LeerEstado()
-    {
-        if(Encendido)
-        return"*";
-        else
-        return"-";
+    char LeerEstado(){
+        if (Encendido)
+        return '*';
+        else  
+        return '-';  
     }
 };

@@ -23,6 +23,7 @@ public:
     } 
 void RecorrerDerecha()
 {
+    
 }
 void ApagarTodo()
 {
